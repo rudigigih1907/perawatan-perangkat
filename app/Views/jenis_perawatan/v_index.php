@@ -23,13 +23,34 @@
     </div>
     <section class="content">
       <div class="container-fluid">
+      <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissible show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">x</button>
+          <b>Success !</b>
+          <?= session()->getFlashdata('success') ?>
+        </div>
+      </div>
+      <?php endif ?>
+      <?php if(session()->getFlashdata('validation')) : ?>
+        <div class="alert alert-danger alert-dismissible show fade">
+          <div class="alert-body">
+            <button class="close" data-dismiss="alert">x</button>
+            <ul>
+              <?php foreach(session()->getFlashdata('validation') as $error) : ?>
+                <li><?= $error ?></li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+        </div>
+      <?php endif ?>
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title mt-2">Tabel Jenis Perawatan</h3>
                 <div class="col text-right">
-                    <button type="button" data-toggle="modal" data-target="#modal-xl-tambahdata" class="btn btn-primary btn-sm">Tambah Data</button>
+                    <button type="button" data-toggle="modal" data-target="#modal-xl-tambahdataJperawatan" class="btn btn-primary btn-sm">Tambah Data</button>
                 </div>
               </div>
               <div class="card-body">
@@ -68,7 +89,7 @@
     </section>
 </div>
 <!-- Modal Tambah Data -->
-<div class="modal fade" id="modal-xl-tambahdata">
+<div class="modal fade" id="modal-xl-tambahdataJperawatan">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -78,10 +99,18 @@
         </button>
       </div>
       <div class="modal-body">
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="col">
+            <form action="<?= base_url('jenis-perawatan') ?>" method="POST" enctype='multipart/form-data' autocomplete="off">
+                <?= csrf_field() ?>
+                <div class="form-group col-md">
+                    <label for="jenis_perawatan">Jenis Perawatan</label>
+                    <input type="text" class="form-control" id="jenis_perawatan" name="jenis_perawatan" autofocus>
+                </div>
+                <div class="col-md p-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
       </div>
     </div>
   </div>

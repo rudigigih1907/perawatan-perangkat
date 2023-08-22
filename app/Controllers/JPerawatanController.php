@@ -14,4 +14,15 @@ class JPerawatanController extends BaseController
         $data['jPerawatans'] = $jPerawatanModel->orderBy('id_perawatan', 'DESC')->findAll();
         return view('jenis_perawatan/v_index', $data);
     }
+
+    public function store()
+    {
+        $jPerawatanModel = new JPerawatanModel();
+        $save = $jPerawatanModel->save($this->request->getPost());
+        if ($save) {
+            return redirect()->to(site_url('jenis-perawatan'))->with('success', 'Data Berhasil Disimpan');
+        } else {
+            return redirect()->to(site_url('jenis-perawatan'))->with('validation', $jPerawatanModel->errors());
+        }
+    }
 }
