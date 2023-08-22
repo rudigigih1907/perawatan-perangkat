@@ -29,15 +29,15 @@ class AssetModel extends Model
         ],
         'nama_asset' => [
             'required' => 'Nama asset harus diisi.',
-            'min_length' => 'Minimal 3 karakter.',
+            'min_length' => 'Nama Asset minimal 3 karakter.',
         ],
         'lokasi_asset' => [
             'required' => 'Lokasi asset harus diisi.',
-            'min_length' => 'Minimal 3 karakter,'
+            'min_length' => 'Lokasi asset minimal 3 karakter,'
         ],
         'pic' => [
             'required' => 'PIC harus diisi.',
-            'min_length' => 'Minimal 3 karakter,'
+            'min_length' => 'P.I.C minimal 3 karakter,'
         ],
         'tanggal_delegasi' => [
             'required' => 'Tanggal harus diisi.',

@@ -23,6 +23,27 @@
     </div>
     <section class="content">
       <div class="container-fluid">
+      <?php if(session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success alert-dismissible show fade">
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">x</button>
+          <b>Success !</b>
+          <?= session()->getFlashdata('success') ?>
+        </div>
+      </div>
+      <?php endif ?>
+      <?php if(session()->getFlashdata('validation')) : ?>
+        <div class="alert alert-danger alert-dismissible show fade">
+          <div class="alert-body">
+            <button class="close" data-dismiss="alert">x</button>
+            <ul>
+              <?php foreach(session()->getFlashdata('validation') as $error) : ?>
+                <li><?= $error ?></li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+        </div>
+      <?php endif ?>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -87,10 +108,26 @@
         </button>
       </div>
       <div class="modal-body">
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="col">
+            <form action="<?= base_url('assets') ?>" method="POST" enctype='multipart/form-data' autocomplete="off">
+                <?= csrf_field() ?>
+                <div class="form-group col-md">
+                    <label for="kode_asset">Kode Asset</label>
+                    <input type="text" class="form-control" id="kode_asset" name="kode_asset" autofocus>
+                    <label for="nama_asset">Nama Asset</label>
+                    <input type="text" class="form-control" id="nama_asset" name="nama_asset" autofocus>
+                    <label for="lokasi_asset">Lokasi Asset</label>
+                    <input type="text" class="form-control" id="lokasi_asset" name="lokasi_asset" autofocus>
+                    <label for="pic">P.I.C</label>
+                    <input type="text" class="form-control" id="pic" name="pic" autofocus>
+                    <label for="tanggal_delegasi">Tanggal Delegasi</label>
+                    <input type="date" class="form-control" id="tanggal_delegasi" name="tanggal_delegasi" autofocus>
+                </div>
+                <div class="col-md p-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
       </div>
     </div>
   </div>

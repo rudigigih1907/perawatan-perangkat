@@ -15,4 +15,14 @@ class AssetsController extends BaseController
         return view('assets/v_index', $data);
     }
 
+    public function store()
+    {
+        $assetsModel = new AssetModel();
+        $save = $assetsModel->save($this->request->getPost());
+        if ($save) {
+            return redirect()->to(site_url('assets'))->with('success', 'Data Berhasil Disimpan');
+        } else {
+            return redirect()->to(site_url('assets'))->with('validation', $assetsModel->errors());
+        }
+    }
 }
