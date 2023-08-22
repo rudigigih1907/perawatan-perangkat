@@ -22,11 +22,11 @@ class UsersModel extends Model
     protected $validationMessages   = [
         'nama_user' => [
             'required' => 'Nama user harus diisi.',
-            'min_length' => 'Minimal 3 karakter.'
+            'min_length' => 'Nama user minimal 3 karakter.'
         ],
         'jabatan' => [
             'required' => 'Jabatan harus diisi.',
-            'min_length' => 'Minimal 3 karakter.'
+            'min_length' => 'Jabatan minimal 3 karakter.'
         ]
     ];
     protected $cleanValidationRules = true;
