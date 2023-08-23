@@ -74,7 +74,8 @@
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-laptop"></i></button>
                                 <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="" onclick="edituser('<?= $user->id_user ?>','<?= $user->nama_user ?>','<?= $user->jabatan ?>')" data-toggle="modal" data-target="#modal-xl-editdataUser<?= $user->id_user?>"
+                                    class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="" class="dropdown-item"><i class="fas fa-trash"></i> Hapus</a>
                                 </div>
                                 </div>
@@ -119,4 +120,37 @@
     </div>
   </div>
 </div>
+
+<?php foreach ($users as $user) : ?>
+<!-- Modal Edit Data -->
+<div class="modal fade" id="modal-xl-editdataUser<?= $user->id_user?>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+            <form action="<?= base_url('users/update/' . $user->id_user) ?>" method="POST" enctype='multipart/form-data' autocomplete="off">
+                <?= csrf_field() ?>
+                <div class="form-group col-md">
+                    <label for="nama_user">Nama User</label>
+                    <input type="hidden" value="<?= $user->id_user ?>" id="id_user1" name="id_user" class="form-control" autofocus>
+                    <input type="text" value="<?= $user->nama_user ?>" id="nama_user1" name="nama_user" class="form-control" autofocus>
+                    <label for="jabatan">Jabatan</label>
+                    <input type="text" value="<?= $user->jabatan ?>" class="form-control" id="jabatan1" name="jabatan" autofocus>
+                </div>
+                <div class="col-md p-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach ?>
 <?= $this->endSection(); ?>

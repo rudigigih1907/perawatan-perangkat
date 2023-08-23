@@ -25,4 +25,12 @@ class UsersController extends BaseController
             return redirect()->to(site_url('users'))->with('validation', $usersModel->errors());
         }
     }
+
+    public function update($id = null)
+    {
+        $userModel = new UsersModel();
+        $data = $this->request->getPost();
+        $userModel->where('id_user', $id)->set($data)->update();
+        return redirect()->to(site_url('users'))->with('success', 'Data berhasil diupdate....!');
+    }
 }

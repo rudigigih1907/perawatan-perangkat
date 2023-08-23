@@ -39,6 +39,7 @@ $routes->get('create-db', function() {
 
 $routes->get('users', 'UsersController::index');
 $routes->post('users', 'UsersController::store');
+$routes->post('/users/update/(:num)', 'UsersController::update/$1');
 $routes->get('assets', 'AssetsController::index');
 $routes->post('assets', 'AssetsController::store');
 $routes->get('jenis-perawatan', 'JPerawatanController::index');
