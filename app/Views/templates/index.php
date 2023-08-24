@@ -100,13 +100,5 @@
     });
   });
 </script>
-
-<script type="text/javascript">
-  function edituser(id_user, nama_user, jabatan) {
-    $("#id_user1").val(id_user);
-    $("#nama_user1").val(nama_user);
-    $("#jabatan1").val(jabatan); 
-  }
-</script>
 </body>
 </html>
