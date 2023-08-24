@@ -42,6 +42,7 @@ $routes->post('users', 'UsersController::store');
 $routes->post('/users/update/(:num)', 'UsersController::update/$1');
 $routes->get('assets', 'AssetsController::index');
 $routes->post('assets', 'AssetsController::store');
+$routes->post('/assets/update/(:num)', 'AssetsController::update/$1');
 $routes->get('jenis-perawatan', 'JPerawatanController::index');
 $routes->post('jenis-perawatan', 'JPerawatanController::store');
 $routes->post('/jenis-perawatan/update/(:num)', 'JPerawatanController::update/$1');

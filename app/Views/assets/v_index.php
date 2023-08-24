@@ -80,7 +80,7 @@
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-laptop"></i></button>
                                 <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="" data-toggle="modal" data-target="#modal-xl-editdataasset<?= $asset->asset_id?>" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="" class="dropdown-item"><i class="fas fa-trash"></i> Hapus</a>
                                 </div>
                                 </div>
@@ -132,4 +132,43 @@
     </div>
   </div>
 </div>
+
+<?php foreach ($assets as $asset) : ?>
+<!-- Modal Edit Data -->
+<div class="modal fade" id="modal-xl-editdataasset<?= $asset->asset_id?>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+            <form action="<?= base_url('assets/update/' . $asset->asset_id) ?>" method="POST" enctype='multipart/form-data' autocomplete="off">
+                <?= csrf_field() ?>
+                <div class="form-group col-md">
+                    <input type="hidden" value="<?= $asset->asset_id ?>" id="asset_id" name="asset_id" class="form-control" autofocus>
+                    <label for="nama_asset">Nama Asset</label>
+                    <input type="text" value="<?= $asset->nama_asset ?>" id="nama_asset" name="nama_asset" class="form-control" autofocus>
+                    <label for="lokasi_asset">Lokasi Asset</label>
+                    <input type="text" value="<?= $asset->lokasi_asset ?>" id="lokasi_asset" name="lokasi_asset" class="form-control" autofocus>
+                    <label for="pic">P.I.C</label>
+                    <input type="text" value="<?= $asset->pic ?>" id="pic" name="pic" class="form-control" autofocus>
+                    <label for="tanggal_delegasi">Tanggal Delegasi</label>
+                    <input type="date" value="<?= $asset->tanggal_delegasi ?>" id="tanggal_delegasi" name="tanggal_delegasi" class="form-control" autofocus>
+                    <label for="keterangan">Keterangan</label>
+                    <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="2" autofocus><?= $asset->keterangan ?></textarea>
+                </div>
+                <div class="col-md p-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach ?>
 <?= $this->endSection(); ?>

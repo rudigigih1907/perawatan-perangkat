@@ -25,4 +25,13 @@ class AssetsController extends BaseController
             return redirect()->to(site_url('assets'))->with('validation', $assetsModel->errors());
         }
     }
+
+    public function update($id = null)
+    {
+        $assetsModel = new AssetModel();
+        $data = $this->request->getPost();
+        // print_r($data);
+        $assetsModel->where('asset_id', $id)->set($data)->update();
+        return redirect()->to(site_url('assets'))->with('success', 'Data berhasil diupdate....!');
+    }
 }
