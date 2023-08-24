@@ -25,4 +25,12 @@ class JPerawatanController extends BaseController
             return redirect()->to(site_url('jenis-perawatan'))->with('validation', $jPerawatanModel->errors());
         }
     }
+
+    public function update($id = null)
+    {
+        $jPerawatan = new JPerawatanModel();
+        $data = $this->request->getPost();
+        $jPerawatan->where('id_perawatan', $id)->set($data)->update();
+        return redirect()->to(site_url('jenis-perawatan'))->with('success', 'Data berhasil diupdate....!');
+    }
 }

@@ -72,7 +72,7 @@
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-laptop"></i></button>
                                 <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="" data-toggle="modal" data-target="#modal-xl-editdatajperawatan<?= $jPerawatan->id_perawatan?>" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="" class="dropdown-item"><i class="fas fa-trash"></i> Hapus</a>
                                 </div>
                                 </div>
@@ -115,4 +115,35 @@
     </div>
   </div>
 </div>
+
+<?php foreach ($jPerawatans as $jPerawatan) : ?>
+<!-- Modal Edit Data -->
+<div class="modal fade" id="modal-xl-editdatajperawatan<?= $jPerawatan->id_perawatan?>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+            <form action="<?= base_url('jenis-perawatan/update/' . $jPerawatan->id_perawatan) ?>" method="POST" enctype='multipart/form-data' autocomplete="off">
+                <?= csrf_field() ?>
+                <div class="form-group col-md">
+                    <label for="jenis_perawatan">Jenis Perawatan</label>
+                    <input type="hidden" value="<?= $jPerawatan->id_perawatan ?>" id="id_perawatan1" name="id_perawatan" class="form-control" autofocus>
+                    <input type="text" value="<?= $jPerawatan->jenis_perawatan ?>" id="jenis_perawatan1" name="jenis_perawatan" class="form-control" autofocus>
+                </div>
+                <div class="col-md p-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach ?>
 <?= $this->endSection(); ?>
