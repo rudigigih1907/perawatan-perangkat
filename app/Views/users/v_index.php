@@ -74,7 +74,7 @@
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-laptop"></i></button>
                                 <div class="dropdown-menu">
-                                    <a href="" onclick="edituser('<?= $user->id_user ?>','<?= $user->nama_user ?>','<?= $user->jabatan ?>')" data-toggle="modal" data-target="#modal-xl-editdataUser<?= $user->id_user?>"
+                                    <a href="" data-toggle="modal" data-target="#modal-xl-editdataUser<?= $user->id_user?>"
                                     class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="" class="dropdown-item"><i class="fas fa-trash"></i> Hapus</a>
                                 </div>
