@@ -46,6 +46,7 @@ $routes->post('/assets/update/(:num)', 'AssetsController::update/$1');
 $routes->get('jenis-perawatan', 'JPerawatanController::index');
 $routes->post('jenis-perawatan', 'JPerawatanController::store');
 $routes->post('/jenis-perawatan/update/(:num)', 'JPerawatanController::update/$1');
+$routes->get('perawatan-perangkat', 'PerawatanController::index');
 
 /*
  * --------------------------------------------------------------------
