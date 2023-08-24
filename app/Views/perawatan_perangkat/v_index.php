@@ -37,16 +37,26 @@
                   <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Jenis Perawatan</th>
+                        <th>Waktu Pengecekan</th>
+                        <th>ID Asset</th>
+                        <th>Perawatan</th>
+                        <th>Kondisi</th>
+                        <th>Pelaksana</th>
+                        <th>Mengetahui</th>
                         <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $i = 1 ?>
-                    <?php foreach ($jPerawatans as $jPerawatan) : ?>
+                    <?php foreach ($perawatans as $perawatan) : ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><?= $jPerawatan->jenis_perawatan ?></td>
+                            <td><?= $perawatan->waktu_pengecekan ?></td>
+                            <td><?= $perawatan->id_asset ?></td>
+                            <td><?= $perawatan->perawatan ?></td>
+                            <td><?= $perawatan->kondisi ?></td>
+                            <td><?= $perawatan->pelaksana ?></td>
+                            <td><?= $perawatan->mengetahui ?></td>
                             <td>
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-laptop"></i></button>
@@ -67,4 +77,4 @@
       </div>
     </section>
 </div>
-<?= $this->endSection ?>
+<?= $this->endSection() ?>

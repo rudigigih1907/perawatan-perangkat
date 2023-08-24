@@ -11,7 +11,7 @@ class PerawatanController extends BaseController
     {
         $perawatanModel = new PerawatanModel();
         $data['title'] = "Perawatan Perangkat";
-        $data['perawatans'] = $perawatanModel->orderBy('id_perawatan', 'DESC')->findAll();
-        return view('jenis_perawatan/v_index',$data);
+        $data['perawatans'] = $perawatanModel->orderBy('id_check_perangkat', 'DESC')->findAll();
+        return view('perawatan_perangkat/v_index',$data);
     }
 }
